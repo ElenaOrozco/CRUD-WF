@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversidadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EstudianteSet">
+    <Key>
+      <PropertyRef Name="Identificacion" />
+    </Key>
+    <Property Name="Identificacion" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FechaNac" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="GradoId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GardoSet" Relationship="Self.FK_EstudianteGardo" FromRole="EstudianteSet" ToRole="GardoSet" />
+  </EntityType>
+  <EntityType Name="GardoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="EstudianteSet" Relationship="Self.FK_EstudianteGardo" FromRole="GardoSet" ToRole="EstudianteSet" />
+  </EntityType>
+  <Association Name="FK_EstudianteGardo">
+    <End Role="GardoSet" Type="Self.GardoSet" Multiplicity="1" />
+    <End Role="EstudianteSet" Type="Self.EstudianteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GardoSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EstudianteSet">
+        <PropertyRef Name="GradoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UniversidadEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EstudianteSet" EntityType="Self.EstudianteSet" />
+    <EntitySet Name="GardoSet" EntityType="Self.GardoSet" />
+    <AssociationSet Name="FK_EstudianteGardo" Association="Self.FK_EstudianteGardo">
+      <End Role="GardoSet" EntitySet="GardoSet" />
+      <End Role="EstudianteSet" EntitySet="EstudianteSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

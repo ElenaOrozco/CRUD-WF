@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Univesidad.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="UnivesidadStoreContainer">
+    <EntitySet Name="EstudianteSet" EntityType="Univesidad.Store.EstudianteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GardoSet" EntityType="Univesidad.Store.GardoSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="EstudianteGardo" Association="Univesidad.Store.EstudianteGardo">
+      <End Role="Estudiante" EntitySet="EstudianteSet" />
+      <End Role="Gardo" EntitySet="GardoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="EstudianteSet">
+    <Key>
+      <PropertyRef Name="Identificacion" />
+    </Key>
+    <Property Name="Identificacion" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaNac" Type="datetime" Nullable="false" />
+    <Property Name="GradoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GardoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="EstudianteGardo">
+    <End Role="Estudiante" Type="Univesidad.Store.EstudianteSet" Multiplicity="*" />
+    <End Role="Gardo" Type="Univesidad.Store.GardoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Gardo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Estudiante">
+        <PropertyRef Name="GradoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

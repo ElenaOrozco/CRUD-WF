@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Univesidad" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="UnivesidadContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EstudianteSet" EntityType="Univesidad.Estudiante" />
+    <EntitySet Name="GardoSet" EntityType="Univesidad.Gardo" />
+    <AssociationSet Name="EstudianteGardo" Association="Univesidad.EstudianteGardo">
+      <End Role="Estudiante" EntitySet="EstudianteSet" />
+      <End Role="Gardo" EntitySet="GardoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="Identificacion" />
+    </Key>
+    <Property Name="Identificacion" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <Property Name="FechaNac" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Gardo" Relationship="Univesidad.EstudianteGardo" FromRole="Estudiante" ToRole="Gardo" />
+    <Property Name="GradoId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gardo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grado" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="EstudianteGardo">
+    <End Type="Univesidad.Estudiante" Role="Estudiante" Multiplicity="*" />
+    <End Type="Univesidad.Gardo" Role="Gardo" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Gardo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Estudiante">
+        <PropertyRef Name="GradoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UniversidadModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="EstudianteSet">
+    <Key>
+      <PropertyRef Name="Identificacion" />
+    </Key>
+    <Property Name="Identificacion" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FechaNac" Type="datetime" Nullable="false" />
+    <Property Name="GradoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GardoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grado" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_EstudianteGardo">
+    <End Role="GardoSet" Type="Self.GardoSet" Multiplicity="1" />
+    <End Role="EstudianteSet" Type="Self.EstudianteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GardoSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EstudianteSet">
+        <PropertyRef Name="GradoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UniversidadModelStoreContainer">
+    <EntitySet Name="EstudianteSet" EntityType="Self.EstudianteSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GardoSet" EntityType="Self.GardoSet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EstudianteGardo" Association="Self.FK_EstudianteGardo">
+      <End Role="GardoSet" EntitySet="GardoSet" />
+      <End Role="EstudianteSet" EntitySet="EstudianteSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

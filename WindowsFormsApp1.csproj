@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FBC0085-CBAC-483F-8A9A-661B0AE284ED}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WindowsFormsApp1</RootNamespace>
+    <AssemblyName>WindowsFormsApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Estudiante.cs">
+      <DependentUpon>Univesidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstudianteSet.cs">
+      <DependentUpon>Universidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionEstudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionEstudiantes.Designer.cs">
+      <DependentUpon>frmAdministracionEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gardo.cs">
+      <DependentUpon>Univesidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GardoSet.cs">
+      <DependentUpon>Universidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Universidad.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Universidad.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Universidad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Universidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Universidad.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Universidad.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Univesidad.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Univesidad.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Univesidad.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Univesidad.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Univesidad.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Univesidad.edmx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAdministracionEstudiantes.resx">
+      <DependentUpon>frmAdministracionEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EntityDeploy Include="Univesidad.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Univesidad.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Universidad.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Universidad.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Universidad.edmx.diagram">
+      <DependentUpon>Universidad.edmx</DependentUpon>
+    </None>
+    <None Include="Univesidad.edmx.diagram">
+      <DependentUpon>Univesidad.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Universidad.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Universidad.edmx</DependentUpon>
+      <LastGenOutput>Universidad.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Universidad.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Universidad.edmx</DependentUpon>
+      <LastGenOutput>Universidad.cs</LastGenOutput>
+    </Content>
+    <Content Include="Univesidad.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Univesidad.Context.cs</LastGenOutput>
+      <DependentUpon>Univesidad.edmx</DependentUpon>
+    </Content>
+    <Content Include="Univesidad.edmx.sql" />
+    <Content Include="Univesidad.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Univesidad.cs</LastGenOutput>
+      <DependentUpon>Univesidad.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
